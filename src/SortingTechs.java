@@ -104,14 +104,15 @@ public class SortingTechs {
 		int a = 1;
 		while (a < theArraySize) {
 			int b = a;
-			while ((b > 0) && (theArray[a-1] > theArray[b])) {
-				int holder = theArray[a-1];
-				theArray[a-1] = theArray[b];
+			while ((b > 0) && (theArray[b-1] > theArray[b])) {
+				int holder = theArray[b-1];
+				theArray[b-1] = theArray[b];
 				theArray[b] = holder;
 				b--; //move b back down one position in the array so the previous spot can be checked 
 			}
 			a++; //increment a so that it points one farther down the array.
-			System.out.println(a);
+			System.out.println(arrayPrinter(theArray));
+			
 		}
 		
 		long endTimer = System.currentTimeMillis(); //end timer
