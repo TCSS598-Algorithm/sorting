@@ -32,6 +32,7 @@ public class SortingTechs {
 		//TODO call each of the 4 sorting method 4 times and pass in a copy of one of the array objects each time
 		firstSortingMethod(washingtonDeathNumbers.clone(), 8558);
 		secondSortingMethod(washingtonDeathNumbers.clone(), 8558);
+		thirdSortingMethod(washingtonDeathNumbers.clone(), 8558);
 		System.out.println();
 		
 	
@@ -156,11 +157,40 @@ public class SortingTechs {
 	}
 	
 	
-	//THIRD METHOD OF SORTING
-	//start timer
-	//sort the first array
-	//end timer. save that time into a file.
-	
+	/**
+	 * THIRD METHOD OF SORTING
+	 * 
+	 * start timer sort the first array end timer. save that time into a file.
+	 * 
+	 * @param theArray
+	 * @param theArraySize
+	 */
+	private static void thirdSortingMethod(int[] theArray, int theArraySize) {
+		System.out.println("------Bubble Sort----------");
+		// System.out.println("---------------------sorting:   " +
+		// arrayPrinter(theArray));
+
+		long startTimer = System.currentTimeMillis(); // start timer
+
+		for (int a = 0; a < theArraySize; a++) {
+			for (int b = a + 1; b < theArraySize; b++) {
+				if (theArray[a] > theArray[b]) {
+					int holder = theArray[a];
+					theArray[a] = theArray[b];
+					theArray[b] = holder;
+				}
+			}
+		}
+
+		long endTimer = System.currentTimeMillis(); // end timer
+		long finalTime = endTimer - startTimer;
+
+		System.out.println("It took " + finalTime
+				+ " ms to finish first sorting algorithm.");
+		// System.out.println("---------------------sorted :   " +
+		// arrayPrinter(theArray));
+		System.out.println("-------------------------------------------");
+	}
 	
 	//FOURTH METHOD OF SORTING
 	//start timer
