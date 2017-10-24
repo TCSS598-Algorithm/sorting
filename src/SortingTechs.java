@@ -21,8 +21,8 @@ public class SortingTechs {
 		String csvFile2 = "src/TacomaDeaths.csv";
 		
 		//TODO read data sets 1,2,3,4 into 4 different array objects 
-		int[] bostonAllDeathNumbers = new int[105]; //105 weeks of data.
-		int[] tacomaFluDeathNumbers = new int[105]; //105 weeks of data.
+		int[] bostonAllDeathNumbers = new int[522]; //522 weeks of data.
+		int[] tacomaFluDeathNumbers = new int[522]; //522 weeks of data.
 		
 		//read data into array
 		readIn(csvFile, bostonAllDeathNumbers);
@@ -32,8 +32,8 @@ public class SortingTechs {
 		//System.out.println("last" + tacomaFluDeathNumbers[104]); //test to make sure the last value is 11
 		
 		//TODO call each of the 4 sorting method 4 times and pass in a copy of one of the array objects each time
-		firstSortingMethod(bostonAllDeathNumbers, 105);
-		firstSortingMethod(tacomaFluDeathNumbers, 105);
+		firstSortingMethod(bostonAllDeathNumbers, 522);
+		firstSortingMethod(tacomaFluDeathNumbers, 522);
 		
 
 		
@@ -111,7 +111,7 @@ public class SortingTechs {
 				b--; //move b back down one position in the array so the previous spot can be checked 
 			}
 			a++; //increment a so that it points one farther down the array.
-			System.out.println(arrayPrinter(theArray));
+			//System.out.println(arrayPrinter(theArray));
 			
 		}
 		
