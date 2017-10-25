@@ -73,11 +73,11 @@ public class SortingTechs {
 		    scan.next();
 		}
 		int temp = scan.nextInt(); 
-		if (temp < 1 || temp > size){
+		if ((temp < 1) || (temp > size)){
 			System.out.println("Not allowed program terminate");
 			System.exit(0);
 		}
-		size = scan.nextInt(); 
+		size = temp; 
 		
 
 		DeathsPerWeek[] deathNumbers = new DeathsPerWeek[size]; // <- change type to deaths per week
