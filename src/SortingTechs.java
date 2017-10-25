@@ -140,13 +140,13 @@ public class SortingTechs {
 	 * Check if the data column is empty. 
 	 * Doing this because Integer.parseInt() on a null value would cause an error.
 	 * @param num is the value in one of the columns
-	 * @return value if column was not null, else 0 if column was null
+	 * @return if column is null or an empty string then return 0, else return the value in the column.
 	 */
 	private static int intParseNullCheck(String num) {
-		if (num != null) {
-			return Integer.parseInt(num);
-		} else {
+		if (num == null || num.equals("")) {
 			return 0;
+		} else {
+			return Integer.parseInt(num);
 		}
 	}
 	
