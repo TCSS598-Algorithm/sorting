@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * @author Arshdeep Singh
@@ -11,8 +12,9 @@ import java.io.IOException;
  */
 public class SortingTechs {
 
+	private static Scanner scan;
+
 	public static void main(String[] args) throws IOException{
-		
 		
 		/*
 		 * NOTE: csv files have the following column in this order:
@@ -21,27 +23,52 @@ public class SortingTechs {
 		 * Index:     | 0  |      1        |       2        |    3   |    4  |    5 |             6              |        7          |      8         |    9   |    10   |    11   |   12  |  
 		 *
 		 */
-		String csvFile1 = "src/BostonDeaths.csv";
-//		String csvFile2 = "src/WashDeath.csv";
-//		String csvFile3 = "src/WashDeath.csv";
-//		String csvFile4 = "src/WashDeath.csv";
+		System.out.println("select one of the following options:"); 
+		System.out.println("1: src/BostonDeaths.csv"); 
+		System.out.println("2: src/TacomaDeaths.csv"); 
+		System.out.println("3: src/SortinglandDeaths.csv"); 
+		System.out.println("4: src/ReverselandDeaths.csv"); 
+		System.out.println("5: src/WashDeath.csv"); 
+		System.out.println("Enter numeric Value:"); 
 		
-		//TODO read data sets 1,2,3,4 into 4 different array objects 
+		String csvFile = ""; 
+		scan = new Scanner(System.in); 
+		int size = 0; 
+		int selection = scan.nextInt(); 
+		if (selection == 1) {
+			csvFile = "src/BostonDeaths.csv";
+			size = 522; 
+		} else if (selection == 2) {
+			csvFile = "src/TacomaDeaths.csv";
+			size = 522; 
+		} else if (selection == 3) {
+			csvFile = "src/SortinglandDeaths.csv";
+			size = 2088; 
+		} else if (selection == 4) {
+			csvFile = "src/ReverselandDeaths.csv";
+			size = 2088; 
+		} else if (selection == 5) {
+			csvFile = "src/WashDeath.csv";
+			size = 8558; 
+		} else {
+			System.out.println("Not allowed program terminate");
+			System.exit(0);
+		}
 
-		int[] washingtonDeathNumbers = new int[8558];
+		int[] deathNumbers = new int[size]; // <- change type to deaths per week
 		
 		/*
 		 * read csv data into array
 		 */
-		readIn(csvFile1, washingtonDeathNumbers);
+		readIn(csvFile, deathNumbers); //<- read in all rows
 		
 
 		//TODO call each of the 4 sorting method 4 times and pass in a copy of one of the array objects each time
-		firstSortingMethod(washingtonDeathNumbers.clone(), 8558); // slower due to stale run.
-		secondSortingMethod(washingtonDeathNumbers.clone(), 8558);
-		thirdSortingMethod(washingtonDeathNumbers.clone(), 8558);
-		fourthSortingMethod(washingtonDeathNumbers.clone(), 8558);
-		fifthSortingMethod(washingtonDeathNumbers.clone(), 8558);
+		firstSortingMethod(deathNumbers.clone(), size); // <- change as needed
+		secondSortingMethod(deathNumbers.clone(), size); // <- change as needed
+		thirdSortingMethod(deathNumbers.clone(), size); // <- change as needed
+		fourthSortingMethod(deathNumbers.clone(), size); // <- change as needed
+		fifthSortingMethod(deathNumbers.clone(), size); // <- change as needed
 		System.out.println();
 		
 	
