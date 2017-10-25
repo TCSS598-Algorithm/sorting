@@ -68,7 +68,7 @@ public class SortingTechs {
 		firstSortingMethod(deathNumbers.clone(), size); // <- change as needed
 		secondSortingMethod(deathNumbers.clone(), size); // <- change as needed
 		thirdSortingMethod(deathNumbers.clone(), size); // <- change as needed
-//		fourthSortingMethod(deathNumbers.clone(), size); // <- change as needed
+		fourthSortingMethod(deathNumbers.clone(), size); // <- change as needed
 //		fifthSortingMethod(deathNumbers.clone(), size); // <- change as needed
 		System.out.println();
 		
@@ -266,7 +266,7 @@ public class SortingTechs {
 	 * @param theArray
 	 * @param theArraySize
 	 */
-	private static void fourthSortingMethod(int[] theArray, int theArraySize) {
+	private static void fourthSortingMethod(DeathsPerWeek[] theArray, int theArraySize) {
 		System.out.println("------Merge Sort----------");
 		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 
@@ -295,7 +295,7 @@ public class SortingTechs {
 	 * @param theArray
 	 * @param theArraySize
 	 */
-	private static void divideConquer(int[] theArray, int a, int b) {
+	private static void divideConquer(DeathsPerWeek[] theArray, int a, int b) {
         if (a < b) {
             
             int divide = (a+b)/2;
@@ -317,15 +317,14 @@ public class SortingTechs {
 	 * @param leftArray
 	 * @param rightArray
 	 */
-	private static void conquer(int[] theArray, int a, int divide, int b) {
+	private static void conquer(DeathsPerWeek[] theArray, int a, int divide, int b) {
 		/*
 		 * size of sub arrays (stored for use later)
 		 */
 		int left = divide - a + 1;
 		int right = b - divide;
-
-		int leftArray[] = new int[left]; // left side 
-		int rightArray[] = new int[right]; // right side
+		DeathsPerWeek leftArray[] = new DeathsPerWeek[left]; // left side 
+		DeathsPerWeek rightArray[] = new DeathsPerWeek[right]; // right side
 
 		/*
 		 * populate left side 
@@ -346,7 +345,7 @@ public class SortingTechs {
 		int k = a; // initial index 
 
 		while (i < left && j < right) {
-			if (leftArray[i] <= rightArray[j]) {
+			if (leftArray[i].getDeathTotal() <= rightArray[j].getDeathTotal()) {
 				theArray[k] = leftArray[i];
 				i++;
 			} else {
