@@ -28,7 +28,7 @@ public class SortingTechs {
 		
 		//TODO read data sets 1,2,3,4 into 4 different array objects 
 
-		int[] washingtonDeathNumbers = new int[522];
+		int[] washingtonDeathNumbers = new int[8558];
 		
 		/*
 		 * read csv data into array
@@ -37,11 +37,11 @@ public class SortingTechs {
 		
 
 		//TODO call each of the 4 sorting method 4 times and pass in a copy of one of the array objects each time
-		firstSortingMethod(washingtonDeathNumbers.clone(), 522); // slower due to stale run.
-		secondSortingMethod(washingtonDeathNumbers.clone(), 522);
-		thirdSortingMethod(washingtonDeathNumbers.clone(), 522);
-		fourthSortingMethod(washingtonDeathNumbers.clone(), 522);
-		fifthSortingMethod(washingtonDeathNumbers.clone(), 522);
+		firstSortingMethod(washingtonDeathNumbers.clone(), 8558); // slower due to stale run.
+		secondSortingMethod(washingtonDeathNumbers.clone(), 8558);
+		thirdSortingMethod(washingtonDeathNumbers.clone(), 8558);
+		fourthSortingMethod(washingtonDeathNumbers.clone(), 8558);
+		fifthSortingMethod(washingtonDeathNumbers.clone(), 8558);
 		System.out.println();
 		
 	
@@ -110,7 +110,7 @@ public class SortingTechs {
 	 */
 	private static void firstSortingMethod(int[] theArray, int theArraySize) {
 		System.out.println("------Insertion Sort----------");
-		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
+		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 		
 		long startTimer = System.currentTimeMillis(); //start timer
 		
@@ -133,7 +133,7 @@ public class SortingTechs {
 		long finalTime = endTimer - startTimer;
 		
 		System.out.println("It took " + finalTime + " ms to finish first sorting algorithm.");
-		System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
+		//System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
 		System.out.println("-------------------------------------------");
 	}
 	/**
@@ -147,7 +147,7 @@ public class SortingTechs {
 	 */
 	private static void secondSortingMethod(int[] theArray, int theArraySize) {
 		System.out.println("------Selection Sort----------");
-		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
+		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 		
 		long startTimer = System.currentTimeMillis(); //start timer
 		
@@ -167,7 +167,7 @@ public class SortingTechs {
 		long finalTime = endTimer - startTimer;
 		
 		System.out.println("It took " + finalTime + " ms to finish 2nd sorting algorithm.");
-		System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
+		//System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
 		System.out.println("-------------------------------------------");
 	}
 	
@@ -182,7 +182,7 @@ public class SortingTechs {
 	 */
 	private static void thirdSortingMethod(int[] theArray, int theArraySize) {
 		System.out.println("------Bubble Sort----------");
-		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
+		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 
 		long startTimer = System.currentTimeMillis(); // start timer
 
@@ -200,7 +200,7 @@ public class SortingTechs {
 		long finalTime = endTimer - startTimer;
 
 		System.out.println("It took " + finalTime + " ms to finish third sorting algorithm.");
-		System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
+		//System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
 		System.out.println("-------------------------------------------");
 	}
 		
@@ -216,7 +216,7 @@ public class SortingTechs {
 	 */
 	private static void fourthSortingMethod(int[] theArray, int theArraySize) {
 		System.out.println("------Merge Sort----------");
-		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
+		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 
 		long startTimer = System.currentTimeMillis(); // start timer
 		
@@ -229,7 +229,7 @@ public class SortingTechs {
 		long finalTime = endTimer - startTimer;
 
 		System.out.println("It took " + finalTime + " ms to finish fourth sorting algorithm.");
-		System.out.println("---------------------sorted:   " + arrayPrinter(theArray));
+		//System.out.println("---------------------sorted:   " + arrayPrinter(theArray));
 		System.out.println("-------------------------------------------");
 	}
 	
@@ -335,7 +335,7 @@ public class SortingTechs {
 	 */
 	private static void fifthSortingMethod(int[] theArray, int theArraySize) {
 		System.out.println("------Quick Sort----------");
-		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
+		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 		
 		long startTimer = System.currentTimeMillis(); // start timer
 		int a = 0; // starting index
@@ -347,7 +347,7 @@ public class SortingTechs {
 		long finalTime = endTimer - startTimer;
 
 		System.out.println("It took " + finalTime + " ms to finish fifth sorting algorithm.");
-		System.out.println("---------------------sorted:   " + arrayPrinter(theArray));
+		//System.out.println("---------------------sorted:   " + arrayPrinter(theArray));
 		System.out.println("-------------------------------------------");
 	}	
 	
