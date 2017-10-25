@@ -32,9 +32,15 @@ public class SortingTechs {
 		System.out.println("5: src/WashDeath.csv"); 
 		System.out.println("Enter numeric Value:"); 
 		
+		/**
+		 * allow user to select data to be sorted
+		 */
 		String csvFile = ""; 
 		scan = new Scanner(System.in); 
 		int size = 0; 
+		while(!scan.hasNextInt()) {
+		    scan.next();
+		}
 		int selection = scan.nextInt(); 
 		if (selection == 1) {
 			csvFile = "src/BostonDeaths.csv";
@@ -55,6 +61,19 @@ public class SortingTechs {
 			System.out.println("Not allowed program terminate");
 			System.exit(0);
 		}
+		
+		System.out.println("enter the amount of data to be sorted"); 
+		System.out.println("must be in range of 1 to "+size+":"); 
+		
+		/**
+		 * allow user to change data size within range 
+		 * (needed for report)
+		 */
+		while(!scan.hasNextInt() && (scan.nextInt() < 1 || scan.nextInt() > size)) {
+		    scan.next();
+		}
+		size = scan.nextInt(); 
+		
 
 		DeathsPerWeek[] deathNumbers = new DeathsPerWeek[size]; // <- change type to deaths per week
 		
