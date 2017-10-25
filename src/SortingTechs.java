@@ -69,7 +69,7 @@ public class SortingTechs {
 		secondSortingMethod(deathNumbers.clone(), size); // <- change as needed
 		thirdSortingMethod(deathNumbers.clone(), size); // <- change as needed
 		fourthSortingMethod(deathNumbers.clone(), size); // <- change as needed
-//		fifthSortingMethod(deathNumbers.clone(), size); // <- change as needed
+		fifthSortingMethod(deathNumbers.clone(), size); // <- change as needed
 		System.out.println();
 		
 	
