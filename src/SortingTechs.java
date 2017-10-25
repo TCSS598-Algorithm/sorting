@@ -56,7 +56,7 @@ public class SortingTechs {
 			System.exit(0);
 		}
 
-		int[] deathNumbers = new int[size]; // <- change type to deaths per week
+		DeathsPerWeek[] deathNumbers = new DeathsPerWeek[size]; // <- change type to deaths per week
 		
 		/*
 		 * read csv data into array
@@ -65,11 +65,11 @@ public class SortingTechs {
 		
 
 		//TODO call each of the 4 sorting method 4 times and pass in a copy of one of the array objects each time
-		firstSortingMethod(deathNumbers.clone(), size); // <- change as needed
-		secondSortingMethod(deathNumbers.clone(), size); // <- change as needed
-		thirdSortingMethod(deathNumbers.clone(), size); // <- change as needed
-		fourthSortingMethod(deathNumbers.clone(), size); // <- change as needed
-		fifthSortingMethod(deathNumbers.clone(), size); // <- change as needed
+//		firstSortingMethod(deathNumbers.clone(), size); // <- change as needed
+//		secondSortingMethod(deathNumbers.clone(), size); // <- change as needed
+//		thirdSortingMethod(deathNumbers.clone(), size); // <- change as needed
+//		fourthSortingMethod(deathNumbers.clone(), size); // <- change as needed
+//		fifthSortingMethod(deathNumbers.clone(), size); // <- change as needed
 		System.out.println();
 		
 	
@@ -80,7 +80,7 @@ public class SortingTechs {
 	 * @param theCSVFile string value that tells the program where the csv file is stored.
 	 * @param deathList
 	 */
-	private static void readIn(String theCSVFile, int[] deathList) {
+	private static void readIn(String theCSVFile, DeathsPerWeek[] deathList) {
         int DeathCOUNT = 0;
         
 		BufferedReader br = null;
@@ -105,6 +105,7 @@ public class SortingTechs {
                 
                 //System.out.println("All Boston Deaths [week= " + deathInfo[2] + " , deaths=" + deathInfo[7] + "]");
                 //deathList[DeathCOUNT] = Integer.parseInt(deathInfo[7]);
+                deathList[DeathCOUNT] = deathObject;  
                 
                 DeathCOUNT ++; //increase count for building array 1 piece at a time
             }
