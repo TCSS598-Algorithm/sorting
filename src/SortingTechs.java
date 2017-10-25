@@ -48,7 +48,7 @@ public class SortingTechs {
 	}
 	
 	/**
-	 * 
+	 * read in the csv file and store the values in our DeathsPerWeek Object.
 	 * @param theCSVFile string value that tells the program where the csv file is stored.
 	 * @param deathList
 	 */
