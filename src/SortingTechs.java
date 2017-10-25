@@ -62,22 +62,25 @@ public class SortingTechs {
 			System.exit(0);
 		}
 		
-		System.out.println("enter the amount of data to be sorted"); 
-		System.out.println("must be in range of 1 to "+size+":"); 
 		
 		/**
 		 * allow user to change data size within range 
 		 * (needed for report)
 		 */
-		while(!scan.hasNextInt()) {
-		    scan.next();
-		}
-		int temp = scan.nextInt(); 
-		if ((temp < 1) || (temp > size)){
-			System.out.println("Not allowed program terminate");
-			System.exit(0);
-		}
-		size = temp; 
+		int temp;
+		boolean good = false;
+		do
+		{
+			System.out.println("enter the amount of data to be sorted"); 
+			System.out.println("must be in range of 1 to "+size+":"); 
+			temp = scan.nextInt();
+			if(temp > 1 && temp <=  size) {
+				good = true;
+			}
+			else
+				System.out.println("value is not valid");
+		} while (!good);
+		size = temp;
 		
 
 		DeathsPerWeek[] deathNumbers = new DeathsPerWeek[size]; // <- change type to deaths per week
@@ -133,6 +136,8 @@ public class SortingTechs {
                 
                 DeathCOUNT ++; //increase count for building array 1 piece at a time
             }
+        } catch (ArrayIndexOutOfBoundsException e) {
+        		System.out.println("currently DeathCOUNT is " + DeathCOUNT);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
