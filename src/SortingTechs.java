@@ -30,7 +30,7 @@ public class SortingTechs {
 		System.out.println("3: src/SortinglandDeaths.csv"); 
 		System.out.println("4: src/ReverselandDeaths.csv"); 
 		System.out.println("5: src/WashDeath.csv"); 
-		System.out.println("Enter numeric Value:"); 
+		System.out.println("Enter one of the displayed numeric Value:"); 
 		
 		/**
 		 * allow user to select data to be sorted
@@ -69,8 +69,13 @@ public class SortingTechs {
 		 * allow user to change data size within range 
 		 * (needed for report)
 		 */
-		while(!scan.hasNextInt() && (scan.nextInt() < 1 || scan.nextInt() > size)) {
+		while(!scan.hasNextInt()) {
 		    scan.next();
+		}
+		int temp = scan.nextInt(); 
+		if (temp < 1 || temp > size){
+			System.out.println("Not allowed program terminate");
+			System.exit(0);
 		}
 		size = scan.nextInt(); 
 		
