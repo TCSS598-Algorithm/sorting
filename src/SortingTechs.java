@@ -129,10 +129,10 @@ public class SortingTechs {
 	 * @param array
 	 * @return
 	 */
-	private static String arrayPrinter(int[] array) {
+	private static String arrayPrinter(DeathsPerWeek[] array) {
 		String s = "";
 		for (int i = 0; i < array.length; i++) {
-			s += array[i] + " ";
+			s += array[i].getDeathTotal() + " ";
 		}
 		return s;
 	}
@@ -152,7 +152,7 @@ public class SortingTechs {
 	}
 	
 	/**
-	 * FIRST METHOD OF SORTING
+	 * FIRST METHOD OF SORTINGa
 	 * 
 	 * implements Insertion sort 
 	 * start timer sort the first array end timer. save that time into a file.
