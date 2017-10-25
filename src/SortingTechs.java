@@ -67,7 +67,7 @@ public class SortingTechs {
 		//TODO call each of the 4 sorting method 4 times and pass in a copy of one of the array objects each time
 		firstSortingMethod(deathNumbers.clone(), size); // <- change as needed
 		secondSortingMethod(deathNumbers.clone(), size); // <- change as needed
-//		thirdSortingMethod(deathNumbers.clone(), size); // <- change as needed
+		thirdSortingMethod(deathNumbers.clone(), size); // <- change as needed
 //		fourthSortingMethod(deathNumbers.clone(), size); // <- change as needed
 //		fifthSortingMethod(deathNumbers.clone(), size); // <- change as needed
 		System.out.println();
@@ -232,7 +232,7 @@ public class SortingTechs {
 	 * @param theArray
 	 * @param theArraySize
 	 */
-	private static void thirdSortingMethod(int[] theArray, int theArraySize) {
+	private static void thirdSortingMethod(DeathsPerWeek[] theArray, int theArraySize) {
 		System.out.println("------Bubble Sort----------");
 		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 
@@ -240,8 +240,8 @@ public class SortingTechs {
 
 		for (int a = 0; a < theArraySize; a++) {
 			for (int b = a + 1; b < theArraySize; b++) {
-				if (theArray[a] > theArray[b]) {
-					int holder = theArray[a];
+				if (theArray[a].getDeathTotal() > theArray[b].getDeathTotal()) {
+					DeathsPerWeek holder = theArray[a];
 					theArray[a] = theArray[b];
 					theArray[b] = holder;
 				}
