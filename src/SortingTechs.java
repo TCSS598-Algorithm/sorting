@@ -88,7 +88,7 @@ public class SortingTechs {
 		/*
 		 * read csv data into array
 		 */
-		readIn(csvFile, deathNumbers); //<- read in all rows
+		readIn(csvFile, deathNumbers, size); //<- read in all rows
 		
 
 		//TODO call each of the 4 sorting method 4 times and pass in a copy of one of the array objects each time
@@ -107,7 +107,7 @@ public class SortingTechs {
 	 * @param theCSVFile string value that tells the program where the csv file is stored.
 	 * @param deathList
 	 */
-	private static void readIn(String theCSVFile, DeathsPerWeek[] deathList) {
+	private static void readIn(String theCSVFile, DeathsPerWeek[] deathList, int size) {
         int DeathCOUNT = 0;
         
 		BufferedReader br = null;
@@ -118,7 +118,7 @@ public class SortingTechs {
             br = new BufferedReader(new FileReader(theCSVFile));
             String[] deathInfo;
 
-            while ((line = br.readLine()) != null) {
+            while (((line = br.readLine()) != null) && (DeathCOUNT < size)) {
             		
                 deathInfo = line.split(cvsSplitBy); // use comma as separator
                 DeathsPerWeek deathObject = new DeathsPerWeek(Integer.parseInt(deathInfo[0]), Integer.parseInt(deathInfo[1]), 
@@ -136,8 +136,6 @@ public class SortingTechs {
                 
                 DeathCOUNT ++; //increase count for building array 1 piece at a time
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-        		System.out.println("currently DeathCOUNT is " + DeathCOUNT);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -191,7 +189,7 @@ public class SortingTechs {
 	 */
 	private static void firstSortingMethod(DeathsPerWeek[] theArray, int theArraySize) {
 		System.out.println("------Insertion Sort----------");
-		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
+		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 		
 		long startTimer = System.currentTimeMillis(); //start timer
 		
@@ -214,7 +212,7 @@ public class SortingTechs {
 		long finalTime = endTimer - startTimer;
 		
 		System.out.println("It took " + finalTime + " ms to finish first sorting algorithm.");
-		//System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
+		System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
 		System.out.println("-------------------------------------------");
 	}
 	/**
@@ -228,7 +226,7 @@ public class SortingTechs {
 	 */
 	private static void secondSortingMethod(DeathsPerWeek[] theArray, int theArraySize) {
 		System.out.println("------Selection Sort----------");
-		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
+		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 		
 		long startTimer = System.currentTimeMillis(); //start timer
 		
@@ -248,7 +246,7 @@ public class SortingTechs {
 		long finalTime = endTimer - startTimer;
 		
 		System.out.println("It took " + finalTime + " ms to finish 2nd sorting algorithm.");
-		//System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
+		System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
 		System.out.println("-------------------------------------------");
 	}
 	
