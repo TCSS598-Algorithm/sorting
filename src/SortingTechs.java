@@ -384,7 +384,7 @@ public class SortingTechs {
 	 * @param theArray
 	 * @param theArraySize
 	 */
-	private static void fifthSortingMethod(int[] theArray, int theArraySize) {
+	private static void fifthSortingMethod(DeathsPerWeek[] theArray, int theArraySize) {
 		System.out.println("------Quick Sort----------");
 		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 		
@@ -411,7 +411,7 @@ public class SortingTechs {
 	 * @param a
 	 * @param b
 	 */
-	private static void quickSort(int[] theArray, int i, int j) {
+	private static void quickSort(DeathsPerWeek[] theArray, int i, int j) {
 		/*
 		 * changed int i = a; int j = b; for personal preference
 		 */
@@ -434,19 +434,19 @@ public class SortingTechs {
 	 * @param b
 	 * @return
 	 */
-	private static int partition(int theArray[], int a, int b) {
-		int pivot = theArray[b];
+	private static int partition(DeathsPerWeek[] theArray, int a, int b) {
+		DeathsPerWeek pivot = theArray[b];
 		int i = (a - 1);
 		for (int j = a; j < b; j++) {
-			if (theArray[j] <= pivot) {
+			if (theArray[j].getDeathTotal() <= pivot.getDeathTotal()) {
 				i++;
 
-				int holder = theArray[i];
+				DeathsPerWeek holder = theArray[i];
 				theArray[i] = theArray[j];
 				theArray[j] = holder;
 			}
 		}
-		int holder = theArray[i + 1];
+		DeathsPerWeek holder = theArray[i + 1];
 		theArray[i + 1] = theArray[b];
 		theArray[b] = holder;
 
