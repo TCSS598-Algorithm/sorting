@@ -23,6 +23,7 @@ public class SortingTechs {
 		 * Index:     | 0  |      1        |       2        |    3   |    4  |    5 |             6              |        7          |      8         |    9   |    10   |    11   |   12  |  
 		 *
 		 */
+		
 		System.out.println("select one of the following options:"); 
 		System.out.println("1: src/BostonDeaths.csv"); 
 		System.out.println("2: src/TacomaDeaths.csv"); 
@@ -93,9 +94,18 @@ public class SortingTechs {
             while ((line = br.readLine()) != null) {
             		
                 deathInfo = line.split(cvsSplitBy); // use comma as separator
+                DeathsPerWeek deathObject = new DeathsPerWeek(Integer.parseInt(deathInfo[0]), Integer.parseInt(deathInfo[1]), 
+                												deathInfo[2], deathInfo[3], deathInfo[4], deathInfo[5],
+                												intParseNullCheck(deathInfo[6]), intParseNullCheck(deathInfo[7]),
+                												intParseNullCheck(deathInfo[8]), intParseNullCheck(deathInfo[9]),
+                												intParseNullCheck(deathInfo[10]), intParseNullCheck(deathInfo[11]),
+                												intParseNullCheck(deathInfo[12]));
+                
+                
                 
                 //System.out.println("All Boston Deaths [week= " + deathInfo[2] + " , deaths=" + deathInfo[7] + "]");
-                deathList[DeathCOUNT] = Integer.parseInt(deathInfo[7]);
+                //deathList[DeathCOUNT] = Integer.parseInt(deathInfo[7]);
+                
                 DeathCOUNT ++; //increase count for building array 1 piece at a time
             }
         } catch (FileNotFoundException e) {
@@ -124,6 +134,20 @@ public class SortingTechs {
 			s += array[i] + " ";
 		}
 		return s;
+	}
+	
+	/**
+	 * Check if the data column is empty. 
+	 * Doing this because Integer.parseInt() on a null value would cause an error.
+	 * @param num is the value in one of the columns
+	 * @return value if column was not null, else 0 if column was null
+	 */
+	private static int intParseNullCheck(String num) {
+		if (num != null) {
+			return Integer.parseInt(num);
+		} else {
+			return 0;
+		}
 	}
 	
 	/**

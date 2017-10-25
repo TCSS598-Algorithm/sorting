@@ -6,13 +6,13 @@
  */
 public class DeathsPerWeek {
 	private int year, week, diseaseDeath, deathTotal, deathBaby,
-	deathYouth, deathMiddle, deathOld;
+	deathYouth, deathPrime, deathMiddle, deathOld;
 	private String weekDate, region, state, city; 
 
 
 	public DeathsPerWeek(int year, int week, String weekDate, String region,
 			String state, String city, int diseaseDeath, int deathTotal,
-			int deathBaby, int deathYouth, int deathMiddle, int deathOld) {
+			int deathBaby, int deathYouth, int deathPrime, int deathMiddle, int deathOld) {
 		this.year = year;
 		this.week = week;
 		this.weekDate = weekDate;
@@ -23,6 +23,7 @@ public class DeathsPerWeek {
 		this.deathTotal = deathTotal;
 		this.deathBaby = deathBaby;
 		this.deathYouth = deathYouth;
+		this.setDeathPrime(deathPrime);
 		this.deathMiddle = deathMiddle;
 		this.deathOld = deathOld;
 	}
@@ -122,6 +123,16 @@ public class DeathsPerWeek {
 
 	public void setWeek(int week) {
 		this.week = week;
+	}
+
+
+	public int getDeathPrime() {
+		return deathPrime;
+	}
+
+
+	public void setDeathPrime(int deathPrime) {
+		this.deathPrime = deathPrime;
 	}
 	
 	
