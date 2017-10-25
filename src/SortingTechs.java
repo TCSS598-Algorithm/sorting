@@ -65,7 +65,7 @@ public class SortingTechs {
 		
 
 		//TODO call each of the 4 sorting method 4 times and pass in a copy of one of the array objects each time
-//		firstSortingMethod(deathNumbers.clone(), size); // <- change as needed
+		firstSortingMethod(deathNumbers.clone(), size); // <- change as needed
 //		secondSortingMethod(deathNumbers.clone(), size); // <- change as needed
 //		thirdSortingMethod(deathNumbers.clone(), size); // <- change as needed
 //		fourthSortingMethod(deathNumbers.clone(), size); // <- change as needed
@@ -160,7 +160,7 @@ public class SortingTechs {
 	 * @param theArray
 	 * @param theArraySize
 	 */
-	private static void firstSortingMethod(int[] theArray, int theArraySize) {
+	private static void firstSortingMethod(DeathsPerWeek[] theArray, int theArraySize) {
 		System.out.println("------Insertion Sort----------");
 		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 		
@@ -170,8 +170,8 @@ public class SortingTechs {
 		int a = 1;
 		while (a < theArraySize) {
 			int b = a;
-			while ((b > 0) && (theArray[b-1] > theArray[b])) {
-				int holder = theArray[b-1];
+			while ((b > 0) && (theArray[b-1].getDeathTotal() > theArray[b].getDeathTotal())) {
+				DeathsPerWeek holder = theArray[b-1];
 				theArray[b-1] = theArray[b];
 				theArray[b] = holder;
 				b--; //move b back down one position in the array so the previous spot can be checked 
