@@ -91,12 +91,15 @@ public class SortingTechs {
 		readIn(csvFile, deathNumbers, size); //<- read in all rows
 		
 
-		//TODO call each of the 4 sorting method 4 times and pass in a copy of one of the array objects each time
-		firstSortingMethod(deathNumbers.clone(), size); // <- change as needed
-		secondSortingMethod(deathNumbers.clone(), size); // <- change as needed
-		thirdSortingMethod(deathNumbers.clone(), size); // <- change as needed
-		fourthSortingMethod(deathNumbers.clone(), size); // <- change as needed
-		fifthSortingMethod(deathNumbers.clone(), size); // <- change as needed
+		/*
+		 * all methods sort based off of total deaths "deathTotal"
+		 * 1
+		 */
+		firstSortingMethod(deathNumbers.clone(), size);
+		secondSortingMethod(deathNumbers.clone(), size);
+		thirdSortingMethod(deathNumbers.clone(), size); 
+		fourthSortingMethod(deathNumbers.clone(), size); 
+		fifthSortingMethod(deathNumbers.clone(), size);
 		System.out.println();
 		
 	
@@ -106,6 +109,7 @@ public class SortingTechs {
 	 * read in the csv file and store the values in our DeathsPerWeek Object.
 	 * @param theCSVFile string value that tells the program where the csv file is stored.
 	 * @param deathList
+	 * @param size
 	 */
 	private static void readIn(String theCSVFile, DeathsPerWeek[] deathList, int size) {
         int DeathCOUNT = 0;
@@ -118,7 +122,7 @@ public class SortingTechs {
             br = new BufferedReader(new FileReader(theCSVFile));
             String[] deathInfo;
 
-            while (((line = br.readLine()) != null) && (DeathCOUNT < size)) {
+            while (((line = br.readLine()) != null) && (DeathCOUNT < size)) { //stop when we have the desired data size
             		
                 deathInfo = line.split(cvsSplitBy); // use comma as separator
                 DeathsPerWeek deathObject = new DeathsPerWeek(Integer.parseInt(deathInfo[0]), Integer.parseInt(deathInfo[1]), 
@@ -127,13 +131,8 @@ public class SortingTechs {
                 												intParseNullCheck(deathInfo[8]), intParseNullCheck(deathInfo[9]),
                 												intParseNullCheck(deathInfo[10]), intParseNullCheck(deathInfo[11]),
                 												intParseNullCheck(deathInfo[12]));
-                
-                
-                
-                //System.out.println("All Boston Deaths [week= " + deathInfo[2] + " , deaths=" + deathInfo[7] + "]");
-                //deathList[DeathCOUNT] = Integer.parseInt(deathInfo[7]);
+
                 deathList[DeathCOUNT] = deathObject;  
-                
                 DeathCOUNT ++; //increase count for building array 1 piece at a time
             }
         } catch (FileNotFoundException e) {
@@ -189,7 +188,7 @@ public class SortingTechs {
 	 */
 	private static void firstSortingMethod(DeathsPerWeek[] theArray, int theArraySize) {
 		System.out.println("------Insertion Sort----------");
-		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
+	//	System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 		
 		long startTimer = System.currentTimeMillis(); //start timer
 		
@@ -212,7 +211,7 @@ public class SortingTechs {
 		long finalTime = endTimer - startTimer;
 		
 		System.out.println("It took " + finalTime + " ms to finish first sorting algorithm.");
-		System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
+	//	System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
 		System.out.println("-------------------------------------------");
 	}
 	/**
@@ -226,7 +225,7 @@ public class SortingTechs {
 	 */
 	private static void secondSortingMethod(DeathsPerWeek[] theArray, int theArraySize) {
 		System.out.println("------Selection Sort----------");
-		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
+//		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 		
 		long startTimer = System.currentTimeMillis(); //start timer
 		
@@ -246,7 +245,7 @@ public class SortingTechs {
 		long finalTime = endTimer - startTimer;
 		
 		System.out.println("It took " + finalTime + " ms to finish 2nd sorting algorithm.");
-		System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
+//		System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
 		System.out.println("-------------------------------------------");
 	}
 	
@@ -261,7 +260,7 @@ public class SortingTechs {
 	 */
 	private static void thirdSortingMethod(DeathsPerWeek[] theArray, int theArraySize) {
 		System.out.println("------Bubble Sort----------");
-		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
+//		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 
 		long startTimer = System.currentTimeMillis(); // start timer
 
@@ -279,7 +278,7 @@ public class SortingTechs {
 		long finalTime = endTimer - startTimer;
 
 		System.out.println("It took " + finalTime + " ms to finish third sorting algorithm.");
-		//System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
+//		System.out.println("---------------------sorted :   " + arrayPrinter(theArray));
 		System.out.println("-------------------------------------------");
 	}
 		
@@ -295,20 +294,23 @@ public class SortingTechs {
 	 */
 	private static void fourthSortingMethod(DeathsPerWeek[] theArray, int theArraySize) {
 		System.out.println("------Merge Sort----------");
-		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
+//		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 
 		long startTimer = System.currentTimeMillis(); // start timer
 		
 		int a = 0; // starting index
 		int b = theArraySize - 1; // ending index [0-99] 99 = 100(size) - 1
 		
+		/*
+		 * sorting done in helper method for recursion 
+		 */
 		divideConquer(theArray, a, b);
 
 		long endTimer = System.currentTimeMillis(); // end timer
 		long finalTime = endTimer - startTimer;
 
 		System.out.println("It took " + finalTime + " ms to finish fourth sorting algorithm.");
-		//System.out.println("---------------------sorted:   " + arrayPrinter(theArray));
+//		System.out.println("---------------------sorted:   " + arrayPrinter(theArray));
 		System.out.println("-------------------------------------------");
 	}
 	
@@ -330,7 +332,7 @@ public class SortingTechs {
             divideConquer(theArray, a, divide);
             divideConquer(theArray, divide+1, b);
 
-            conquer(theArray, a, divide, b);
+            conquer(theArray, a, b, divide);
         }
 	}
 	
@@ -344,34 +346,31 @@ public class SortingTechs {
 	 * @param leftArray
 	 * @param rightArray
 	 */
-	private static void conquer(DeathsPerWeek[] theArray, int a, int divide, int b) {
+	private static void conquer(DeathsPerWeek[] theArray, int a, int b, int divide) {
+		
 		/*
-		 * size of sub arrays (stored for use later)
+		 * create left array
 		 */
-		int left = divide - a + 1;
-		int right = b - divide;
-		DeathsPerWeek leftArray[] = new DeathsPerWeek[left]; // left side 
-		DeathsPerWeek rightArray[] = new DeathsPerWeek[right]; // right side
-
-		/*
-		 * populate left side 
-		 */
-		for (int i = 0; i < left; ++i) {
+		DeathsPerWeek leftArray[] = new DeathsPerWeek[divide - a + 1]; // left side 
+		for (int i = 0; i < leftArray.length; i++) {
 			leftArray[i] = theArray[a + i];
 		}
-
+		
 		/*
-		 * populate right side 
+		 * create right array
 		 */
-		for (int j = 0; j < right; ++j) {
+		DeathsPerWeek rightArray[] = new DeathsPerWeek[b - divide]; // right side
+		for (int j = 0; j < rightArray.length; j++) {
 			rightArray[j] = theArray[divide + 1 + j];
 		}
-
+		
 		int i = 0;
 		int j = 0;
-		int k = a; // initial index 
-
-		while (i < left && j < right) {
+		int k = a; // indexes for sorting  
+		/*
+		 * compare the arrays values and merge in sorted order
+		 */
+		while (i < leftArray.length && j < rightArray.length) {
 			if (leftArray[i].getDeathTotal() <= rightArray[j].getDeathTotal()) {
 				theArray[k] = leftArray[i];
 				i++;
@@ -385,7 +384,7 @@ public class SortingTechs {
 		/* 
 		 * add all remaining elements (leftArray) 
 		 */
-		while (i < left) {
+		while (i < leftArray.length) {
 			theArray[k] = leftArray[i];
 			i++;
 			k++;
@@ -394,7 +393,7 @@ public class SortingTechs {
 		/* 
 		 * add all remaining elements (rightArray) 
 		 */
-		while (j < right) {
+		while (j < rightArray.length) {
 			theArray[k] = rightArray[j];
 			j++;
 			k++;
@@ -413,19 +412,22 @@ public class SortingTechs {
 	 */
 	private static void fifthSortingMethod(DeathsPerWeek[] theArray, int theArraySize) {
 		System.out.println("------Quick Sort----------");
-		//System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
+//		System.out.println("---------------------sorting:   " + arrayPrinter(theArray));
 		
 		long startTimer = System.currentTimeMillis(); // start timer
 		int a = 0; // starting index
 		int b = theArraySize - 1; // ending index [0-99] 99 = 100(size) - 1
-
+		
+		/*
+		 * sorting done in helper method for recursion 
+		 */
 		quickSort(theArray, a, b);
 
 		long endTimer = System.currentTimeMillis(); // end timer
 		long finalTime = endTimer - startTimer;
 
 		System.out.println("It took " + finalTime + " ms to finish fifth sorting algorithm.");
-		//System.out.println("---------------------sorted:   " + arrayPrinter(theArray));
+//		System.out.println("---------------------sorted:   " + arrayPrinter(theArray));
 		System.out.println("-------------------------------------------");
 	}	
 	
@@ -462,9 +464,11 @@ public class SortingTechs {
 	 * @return
 	 */
 	private static int partition(DeathsPerWeek[] theArray, int a, int b) {
+		// left as a and b here to save variables names i,j
 		DeathsPerWeek pivot = theArray[b];
-		int i = (a - 1);
-		for (int j = a; j < b; j++) {
+		int i = (a - 1); //start at one position back 
+		int j = a; 
+		while (j < b) {
 			if (theArray[j].getDeathTotal() <= pivot.getDeathTotal()) {
 				i++;
 
@@ -472,6 +476,7 @@ public class SortingTechs {
 				theArray[i] = theArray[j];
 				theArray[j] = holder;
 			}
+			j++;
 		}
 		DeathsPerWeek holder = theArray[i + 1];
 		theArray[i + 1] = theArray[b];
