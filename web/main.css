@@ -15,6 +15,7 @@ html, body, .app {
     display: flex;
     flex-flow: wrap-reverse;
     flex-direction: row;
+    height: 150px;
 }
 
 .dataNode {
@@ -29,4 +30,16 @@ h1 {
 
 span {
 	padding-left: 15px;
+}
+
+button {
+  margin-top: 20px;
+  line-height: 60px;
+  font-weight: bold;
+  padding: 0 40px;
+  background: salmon;
+  border: none;
+}
+button:hover {
+  background: lightsalmon;
 }
