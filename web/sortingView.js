@@ -1,14 +1,6 @@
-deathsPerWeek = [191,41,190,69,14,194,10,200,189,207,56,41,204,219,219,202,114,141,118,217,239,210,115,26,171,189,78,5,172,115,131,78,116,161,2,148,86,39,174,66,234,7,159,197,115,238,11,41,56,246,163,78,152,53,73,159,32,51,78,56,149,103,65,153,247,59,191,5,172,115,131,78,116,161,2,148,86,39,174,66,234,7,159,197,115,238,11,41,56,246,163,78,152,53,73,159,32,51,78,56,149,103,65,153,247,59,191,41,190,69,14,194,10,200,189,207,56,41];
-
-
-//TODO: Add in html csv.js lib
-//file = event.dataTransfer.files[0],
-//reader = new FileReader()
-//reader.onload = function (e) {
-	//csv.parse(e.target.result, true);
-	//var data = JSON.parse("[" + csv.csv(csv.column(7, true), false) + "]")
-//}
-
+//data used for testing not used when csv file is uploaded. 
+data = [191,41,190,69,14,194,10,200,189,207,56,41,204,219,219,202,114,141,118,217,239,210,115,26,171,189,78,5,172,115,131,78,116,161,2,148,86,39,174,66,234,7,159,197,115,238,11,41,56,246,163,78,152,53,73,159,32,51,78,56,149,103,65,153,247,59,191,5,172,115,131,78,116,161,2,148,86,39,174,66,234,7,159,197,115,238,11,41,56,246,163,78,152,53,73,159,32,51,78,56,149,103,65,153,247,59,191,41,190,69,14,194,10,200,189,207,56,41];
+scale = .013;
 
 visualSort = (function () {
     var _container,
@@ -27,14 +19,21 @@ visualSort = (function () {
         },
 
         _getDataNode = function (value) {
-            return $('<div class="dataNode" style="height:' + (value / 2.0) + 'px;"/>');
+            return $('<div class="dataNode" style="height:' + ((value / 2.0) * scale) + 'px;"/>');
         },
 
         _update = function (sortName) {
             if (_timeoutFlag[sortName]) { clearTimeout(_timeoutFlag[sortName]); }
             _timeoutFlag[sortName] = setTimeout(function () {
                 _timeoutFlag[sortName] = undefined;
-                var update = _updateQueue[sortName].shift(),
+                var speed = Math.ceil(_updateQueue[sortName].length / 500),
+                	update = function () {
+                		var value;
+                		for (i = 0; i < speed; i++) {
+                			value = _updateQueue[sortName].shift();
+                		}
+                		return value;
+                	}.call();
                     data = update.data;
                 _sortContainer[sortName].empty();
                 data.forEach(function (value) {
@@ -45,7 +44,7 @@ visualSort = (function () {
                 } else {
                 	$(document.body).trigger("completed");
                 }
-            }, 1);
+            }, 0);
         },
 
         _updateView = function (data, sortName) {
@@ -63,23 +62,46 @@ visualSort = (function () {
             $(document.body).on("completed", function () { deferred.resolve(); });
             return deferred.promise();
         },
+        
+        setup: function () {
+        	$("input[type=file]").on("change", $.proxy(this.loadCsv, this));
+        },
 
         init: function () {
             _initView();
 
-            visualSort.sort("Insertion Sort", deathsPerWeek.slice(0), sorts.insertSort).then( function () {
-        		visualSort.sort("Selection Sort", deathsPerWeek.slice(0), sorts.selectionSort).then( function () {
-    				visualSort.sort("Bubble Sort", deathsPerWeek.slice(0), sorts.bubbleSort).then( function () {
-						visualSort.sort("Merge Sort", deathsPerWeek.slice(0), sorts.mergeSort).then( function () {
-							visualSort.sort("Quick Sort", deathsPerWeek.slice(0), sorts.quickSort);
+            visualSort.sort("Insertion Sort", data.slice(0), sorts.insertSort).then( function () {
+        		visualSort.sort("Selection Sort", data.slice(0), sorts.selectionSort).then( function () {
+    				visualSort.sort("Bubble Sort", data.slice(0), sorts.bubbleSort).then( function () {
+						visualSort.sort("Merge Sort", data.slice(0), sorts.mergeSort).then( function () {
+							visualSort.sort("Quick Sort", data.slice(0), sorts.quickSort);
             			});
             		});	
             	});	
             });
-        }
+        },
         
-//        csvfile: function () {
-//       }
+        loadCsv: function (evt) {
+        	var colLookup = {
+        		"BostonDeaths.csv": {col: 7, scale: 2},
+        		"ReverselandDeaths.csv": {col: 7, scale: .013},
+        		"SortinglandDeaths.csv": {col: 7, scale: .013},
+        		"TacomaDeaths.csv": {col: 7, scale: 2},
+        		"WashDeath.csv": {col: 7, scale: 2}
+        	};
+        	var scope = this;
+        	var file = evt.target.files[0];
+        	var reader = new FileReader();
+        	var metaData = colLookup[file.name];
+        	$(reader).on("load", function (e) {
+        		csv.parse(e.target.result, true);
+        		var col = colLookup[e.fileName];
+        		data = JSON.parse("[" + csv.csv(csv.column(metaData.col, true), false) + "]");
+        		scale = metaData.scale;
+        		scope.init();
+        	});
+        	reader.readAsText(file,"UTF-8");
+        }
     };
 })();
 
