@@ -1,5 +1,6 @@
 //data used for testing not used when csv file is uploaded. 
-data = [191,41,190,69,14,194,10,200,189,207,56,41,204,219,219,202,114,141,118,217,239,210,115,26,171,189,78,5,172,115,131,78,116,161,2,148,86,39,174,66,234,7,159,197,115,238,11,41,56,246,163,78,152,53,73,159,32,51,78,56,149,103,65,153,247,59,191,5,172,115,131,78,116,161,2,148,86,39,174,66,234,7,159,197,115,238,11,41,56,246,163,78,152,53,73,159,32,51,78,56,149,103,65,153,247,59,191,41,190,69,14,194,10,200,189,207,56,41];
+_data = [191,41,190,69,14,194,10,200,189,207,56,41,204,219,219,202,114,141,118,217,239,210,115,26,171,189,78,5,172,115,131,78,116,161,2,148,86,39,174,66,234,7,159,197,115,238,11,41,56,246,163,78,152,53,73,159,32,51,78,56,149,103,65,153,247,59,191,5,172,115,131,78,116,161,2,148,86,39,174,66,234,7,159,197,115,238,11,41,56,246,163,78,152,53,73,159,32,51,78,56,149,103,65,153,247,59,191,41,190,69,14,194,10,200,189,207,56,41];
+data = []; 
 scale = .013;
 
 visualSort = (function () {
@@ -70,11 +71,11 @@ visualSort = (function () {
         init: function () {
             _initView();
 
-            visualSort.sort("Insertion Sort", data.slice(0), sorts.insertSort).then( function () {
-        		visualSort.sort("Selection Sort", data.slice(0), sorts.selectionSort).then( function () {
-    				visualSort.sort("Bubble Sort", data.slice(0), sorts.bubbleSort).then( function () {
-						visualSort.sort("Merge Sort", data.slice(0), sorts.mergeSort).then( function () {
-							visualSort.sort("Quick Sort", data.slice(0), sorts.quickSort);
+            visualSort.sort("Insertion Sort", data = _data.slice(0), sorts.insertSort).then( function () {
+        		visualSort.sort("Selection Sort", data = _data.slice(0), sorts.selectionSort).then( function () {
+    				visualSort.sort("Bubble Sort", data = _data.slice(0), sorts.bubbleSort).then( function () {
+						visualSort.sort("Merge Sort", data = _data.slice(0), sorts.mergeSort).then( function () {
+							visualSort.sort("Quick Sort", data = _data.slice(0), sorts.quickSort);
             			});
             		});	
             	});	
@@ -96,7 +97,7 @@ visualSort = (function () {
         	$(reader).on("load", function (e) {
         		csv.parse(e.target.result, true);
         		var col = colLookup[e.fileName];
-        		data = JSON.parse("[" + csv.csv(csv.column(metaData.col, true), false) + "]");
+        		_data = JSON.parse("[" + csv.csv(csv.column(metaData.col, true), false) + "]");
         		scale = metaData.scale;
         		scope.init();
         	});
